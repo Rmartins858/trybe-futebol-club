@@ -11,7 +11,6 @@ interface IRequest {
 export default class UserService {
   public makelogin = async ({ email, password }: IRequest) => {
     const userDataValues = await UserModel.findOne({
-      attributes: ['password'],
       where: { email },
     });
 

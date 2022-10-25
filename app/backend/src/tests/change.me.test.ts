@@ -34,7 +34,7 @@ describe('POST /login', () => {
     });
   });
   describe('Quando a requisição é feita com secesse', () => {
-    it('deve retornar um status 201', async ()=> {
+    it('deve retornar um status 200', async ()=> {
       const httpTResponse = await chai
         .request(app)
         .post('/login')
