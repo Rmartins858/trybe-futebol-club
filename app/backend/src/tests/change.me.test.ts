@@ -39,7 +39,17 @@ describe('POST /login', () => {
         .request(app)
         .post('/login')
         .send({ email: 'any_email@email.com', password: 'any_password' });
-      expect(httpTResponse.status).to.equal(200);
+      expect(httpTResponse.status).to.be.equal(200);
     })
   })
 });
+
+// describe('Teste caso campo "email" e campo "password" estejam corretos',()=> {
+//   it('Deve retornar um status 200', async () => {
+//   const HTTPResponse = await chai
+//   .request(app)
+//   .post('/login')
+//   .send({ email: 'admin@admin.com', password: 'secret_admin'})
+//   expect(HTTPResponse.status).to.be.equal(200);
+//   });
+//   }) 
