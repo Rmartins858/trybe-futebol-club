@@ -43,13 +43,3 @@ describe('POST /login', () => {
     })
   })
 });
-
-// describe('Teste caso campo "email" e campo "password" estejam corretos',()=> {
-//   it('Deve retornar um status 200', async () => {
-//   const HTTPResponse = await chai
-//   .request(app)
-//   .post('/login')
-//   .send({ email: 'admin@admin.com', password: 'secret_admin'})
-//   expect(HTTPResponse.status).to.be.equal(200);
-//   });
-//   }) 
