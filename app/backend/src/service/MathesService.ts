@@ -5,7 +5,7 @@ export default class MatchService {
   private model = MatchesModel;
   private teams = Teams;
 
-  getAllMatches = async () => {
+  getAllMatches = async (inProgress?: unknown) => {
     const matches = await this.model.findAll({
       include: [
         {
@@ -19,7 +19,12 @@ export default class MatchService {
           attributes: { exclude: ['id'] },
         },
       ],
+
     });
+    if (inProgress) {
+      return matches.filter((match) => String(match.inProgress) === inProgress);
+    }
+
     return matches;
   };
 }
