@@ -4,6 +4,7 @@ import UserController from '../controllers/Usercontroller';
 import authMiddleware from '../middlewares/Auth.midleware';
 import TeamsController from '../controllers/TeamsController';
 import MatchController from '../controllers/MatchController';
+import authMatches from '../middlewares/Auth.Matches';
 
 const userController = new UserController();
 const teamsController = new TeamsController();
@@ -22,7 +23,7 @@ router
 router
   .get('/matches', (req, res) => matchController.getAll(req, res));
 router
-  .post('/matches', (req, res) => matchController.createMatch(req, res));
+  .post('/matches', authMatches, (req, res) => matchController.createMatch(req, res));
 router
   .patch('/matches/:id/finish', (req, res) => matchController.matchChangeStatus(req, res));
 // eslint-disable-next-line import/prefer-default-export
