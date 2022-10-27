@@ -7,15 +7,16 @@ export default class MathController {
   constructor() {
     this.matchServices = new MatchServices();
     this.createMatch = this.createMatch.bind(this);
+    this.matchChangeStatus = this.matchChangeStatus.bind(this);
   }
 
-  getAll = async (req: Request, res: Response) => {
+  public getAll = async (req: Request, res: Response) => {
     const { inProgress } = req.query;
     const teams = await this.matchServices.getAllMatches(inProgress);
-    return res.status(200).json(teams);
+    res.status(200).json(teams);
   };
 
-  async createMatch(req: Request, res: Response) {
+  public createMatch = async (req: Request, res: Response) => {
     const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals } = req.body;
 
     const match = await this.matchServices.createMatch({
@@ -24,7 +25,16 @@ export default class MathController {
       homeTeamGoals,
       awayTeamGoals,
     });
-
     res.status(201).json(match);
-  }
+  };
+
+  public matchChangeStatus = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const resultProgress = await this.matchServices.matchChangeStatus(
+      Number(id),
+    );
+    if (resultProgress) {
+      res.status(200).json({ message: 'Finished' });
+    }
+  };
 }

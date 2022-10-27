@@ -37,4 +37,11 @@ export default class MatchService {
   async createMatch(match: IMatch) {
     return this.model.create({ ...match, inProgress: true });
   }
+
+  async matchChangeStatus(id: number) {
+    return this.model.update(
+      { inProgress: false },
+      { where: { id } },
+    );
+  }
 }

@@ -13,6 +13,7 @@ export default class UserService {
     const userDataValues = await UserModel.findOne({
       where: { email },
     });
+    console.log('++++++', userDataValues);
 
     if (!userDataValues) {
       throw new HttpException(401, 'Incorrect email or password');
