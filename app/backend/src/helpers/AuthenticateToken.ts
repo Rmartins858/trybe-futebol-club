@@ -4,7 +4,7 @@ import 'dotenv/config';
 
 const secret = process.env.JWT_SECRET || ('jwt_secret' as jwt.Secret);
 
-const authenticateToken = async (authorization: string) => {
+const authenticateToken = async (authorization: string | undefined) => {
   if (!authorization) {
     throw new HttpException(401, 'missing token');
   }

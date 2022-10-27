@@ -1,11 +1,18 @@
 import MatchesModel from '../database/models/MatchesModel';
 import Teams from '../database/models/TeamsModel';
 
+export interface IMatch {
+  homeTeam: number;
+  awayTeam: number;
+  homeTeamGoals: number;
+  awayTeamGoals: number;
+}
+
 export default class MatchService {
   private model = MatchesModel;
   private teams = Teams;
 
-  getAllMatches = async (inProgress?: unknown) => {
+  getAllMatches = async (inProgress: unknown) => {
     const matches = await this.model.findAll({
       include: [
         {
@@ -19,7 +26,6 @@ export default class MatchService {
           attributes: { exclude: ['id'] },
         },
       ],
-
     });
     if (inProgress) {
       return matches.filter((match) => String(match.inProgress) === inProgress);
@@ -27,4 +33,8 @@ export default class MatchService {
 
     return matches;
   };
+
+  async createMatch(match: IMatch) {
+    return this.model.create({ ...match, inProgress: true });
+  }
 }

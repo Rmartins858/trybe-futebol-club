@@ -3,11 +3,11 @@ import validation from '../middlewares/validation';
 import UserController from '../controllers/Usercontroller';
 import authMiddleware from '../middlewares/Auth.midleware';
 import TeamsController from '../controllers/TeamsController';
-import MathesController from '../controllers/MatchesController';
+import MatchController from '../controllers/MatchController';
 
 const userController = new UserController();
 const teamsController = new TeamsController();
-const matchesController = new MathesController();
+const matchController = new MatchController();
 
 const router = Router();
 
@@ -19,9 +19,9 @@ router
   .get('/teams', (req, res) => teamsController.getAll(req, res));
 router
   .get('/teams/:id', (req, res) => teamsController.getById(req, res));
-
 router
-  .get('/matches', (req, res) => matchesController.getAll(req, res));
-
+  .get('/matches', (req, res) => matchController.getAll(req, res));
+router
+  .post('/matches', (req, res) => matchController.createMatch(req, res));
 // eslint-disable-next-line import/prefer-default-export
 export { router as userRouter };

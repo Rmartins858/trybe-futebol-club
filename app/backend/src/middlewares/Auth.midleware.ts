@@ -7,9 +7,9 @@ const authMiddleware = async (req: Request, res: Response, next: NextFunction) =
 
   if (!authorization) {
     throw new HttpException(400, 'missing token');
-  }
-  const token = await authenticateToken(authorization) as any;
+  } const token = await authenticateToken(authorization) as any;
   const { role } = token.data;
+
   res.status(200).json({ role });
   next();
 };
