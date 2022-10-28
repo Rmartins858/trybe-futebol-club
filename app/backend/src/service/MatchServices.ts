@@ -44,4 +44,11 @@ export default class MatchService {
       { where: { id } },
     );
   }
+
+  async matchUpdate(id: number, homeTeamGoals: number, awayTeamGoals: number) {
+    return this.model.update(
+      { homeTeamGoals, awayTeamGoals },
+      { where: { id } },
+    );
+  }
 }

@@ -31,5 +31,8 @@ router
   );
 router
   .patch('/matches/:id/finish', (req, res) => matchController.matchChangeStatus(req, res));
+
+router
+  .patch('/matches/:id', (req, res) => matchController.matchUpdate(req, res));
 // eslint-disable-next-line import/prefer-default-export
 export { router as userRouter };
