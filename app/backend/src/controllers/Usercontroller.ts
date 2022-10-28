@@ -3,7 +3,8 @@ import { Request, Response } from 'express';
 import UserService from '../service/UserService';
 
 export default class UserController {
-  userService: UserService;
+  private userService: UserService;
+
   constructor() {
     this.userService = new UserService();
   }
