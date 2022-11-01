@@ -5,11 +5,13 @@ import authMiddleware from '../middlewares/Auth.midleware';
 import TeamsController from '../controllers/TeamsController';
 import MatchController from '../controllers/MatchController';
 import AuthMatches from '../middlewares/Auth.Matches';
+import LeaderBoardController from '../controllers/LeaderBoardController ';
 
 const userController = new UserController();
 const teamsController = new TeamsController();
 const matchController = new MatchController();
 const authMatches = new AuthMatches();
+const leaderBoardController = new LeaderBoardController();
 
 const router = Router();
 
@@ -34,5 +36,9 @@ router
 
 router
   .patch('/matches/:id', (req, res) => matchController.matchUpdate(req, res));
+
+router
+  .get('/leaderboard/home', (req, res) => leaderBoardController
+    .getAllLeaderBoardController(req, res));
 // eslint-disable-next-line import/prefer-default-export
 export { router as userRouter };
