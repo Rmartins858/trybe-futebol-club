@@ -23,7 +23,7 @@ Aqui você terá acesso ao contexto geral do projeto, ou seja, seu tema central 
 <details>
 <summary><strong>👨‍💻 O que deverá ser desenvolvido</strong></summary><br />
 
-  ![Exemplo app front](assets/front-example.png)
+  ![Exemplo app front]([assets/front-example.png](https://github.com/dihsantanna/trybe-futebol-clube/blob/main/front-example.png))
 
   O `TFC` é um site informativo sobre partidas e classificações de futebol! ⚽️
 
