@@ -39,7 +39,7 @@ services:
       timeout: 10s
       retries: 5
   db:
-    image: mysql:8.0.21
+    image: mysql
     container_name: db
     platform: linux/x86_64
     ports:
